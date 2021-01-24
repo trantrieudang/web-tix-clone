@@ -5,8 +5,10 @@ import NavbarHome from '../../components/NavbarHome';
 function HomeLayout(props) {
   return (
     <div>
+      
       <NavbarHome />
       {props.children}
+      
     </div>
   );
 }
