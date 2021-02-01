@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Carousel from "./components/Carousel";
 import Searchbar from "./components/Searchbar";
+import Filmlist from './components/Filmlist';
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import listMovieApi from "../../../api/listMovieApi";
 import listTheaterApi from '../../../api/listTheaterApi';
-
+import listMoviePaginationApi from "../../../api/listMoviePagination";
 import {
   actListMovieSuccess,
   actListMovieFailed,
@@ -16,6 +17,12 @@ import {
   actListTheaterSuccess,
   actListTheaterFailed,
 } from "../../../actions/listTheater";
+
+import {
+  actListMoviePagSuccess,
+  actListMoviePagFailed,
+  actListMoviePagRequest,
+} from "../../../actions/listMoviePagination.js";
 
 function HomePage(props) {
   const listMovie = useSelector(
@@ -34,6 +41,16 @@ function HomePage(props) {
     shallowEqual
   );
 
+
+  const listMoviePag = useSelector(
+    
+    (state) => ({
+      loading: state.listMoviePag.loading,
+      data: state.listMoviePag.data,
+    }),
+    
+    shallowEqual
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,6 +66,19 @@ function HomePage(props) {
         dispatch(action);
       }
     };
+    const fetchListMoviePag = async () => {
+      const action = actListMoviePagRequest();
+      dispatch(action);
+      try {
+        const response = await listMoviePaginationApi.getAll();
+        const action = actListMoviePagSuccess(response);
+        dispatch(action);
+      } catch (error) {
+        const action = actListMoviePagFailed(error);
+        dispatch(action);
+      }
+      
+    };
     const fetchListTheater = async () => {
       const action = actListTheaterRequest();
       dispatch(action);
@@ -63,6 +93,7 @@ function HomePage(props) {
     };
     fetchListMovie();
     fetchListTheater();
+    fetchListMoviePag();
   }, [dispatch]);
  
   return (
@@ -70,6 +101,9 @@ function HomePage(props) {
     <div>
       <Carousel />
       <Searchbar listMovie={listMovie.data} listTheater={listTheater.data}/>
+      <Filmlist listMovie={listMovie.data}
+                listMoviePag={listMoviePag.data}
+       />
     </div>
   );
 }
