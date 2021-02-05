@@ -19,6 +19,7 @@
          .collapse {
              .navbar-nav {
                  .nav-item {
+                     
                      padding: 0 40px;
                      @include styleText($color-gray-7 !important, $fs-0, $fw-normal);
                      a {
