@@ -26,6 +26,8 @@ import {
 
 import Showtime from './components/Showtime';
 import News from "./components/News";
+import App from "./components/Application";
+import Footer from "./components/Footer";
 
 function HomePage(props) {
   const listMovie = useSelector(
@@ -109,6 +111,8 @@ function HomePage(props) {
        />
        <Showtime listTheater={listTheater.data} listMovie={listMovie.data} />
        <News />
+       <App />
+       <Footer />
     </div>
   );
 }
