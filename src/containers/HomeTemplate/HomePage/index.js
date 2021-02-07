@@ -25,6 +25,7 @@ import {
 } from "../../../actions/listMoviePagination.js";
 
 import Showtime from './components/Showtime';
+import News from "./components/News";
 
 function HomePage(props) {
   const listMovie = useSelector(
@@ -107,6 +108,7 @@ function HomePage(props) {
                 listMoviePag={listMoviePag.data}
        />
        <Showtime listTheater={listTheater.data} listMovie={listMovie.data} />
+       <News />
     </div>
   );
 }
