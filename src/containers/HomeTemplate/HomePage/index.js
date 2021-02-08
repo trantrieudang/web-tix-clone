@@ -6,6 +6,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import listMovieApi from "../../../api/listMovieApi";
 import listTheaterApi from '../../../api/listTheaterApi';
 import listMoviePaginationApi from "../../../api/listMoviePagination";
+import listTheaterGroupApi from "../../../api/listTheaterGroupApi";
 import {
   actListMovieSuccess,
   actListMovieFailed,
@@ -17,6 +18,12 @@ import {
   actListTheaterSuccess,
   actListTheaterFailed,
 } from "../../../actions/listTheater";
+
+import {
+  actListTheaterGroupRequest,
+  actListTheaterGroupSuccess,
+  actListTheaterGroupFailed,
+} from "../../../actions/listTheaterGroup";
 
 import {
   actListMoviePagSuccess,
@@ -39,6 +46,14 @@ function HomePage(props) {
   );
 
   const listTheater = useSelector(
+    (state) => ({
+      loading: state.listTheater.loading,
+      data: state.listTheater.data,
+    }),
+    shallowEqual
+  );
+
+  const listTheaterGroup = useSelector(
     (state) => ({
       loading: state.listTheater.loading,
       data: state.listTheater.data,
@@ -96,9 +111,23 @@ function HomePage(props) {
         dispatch(action);
       }
     };
+
+    const fetchListTheaterGroup = async () => {
+      const action = actListTheaterGroupRequest();
+      dispatch(action);
+      try {
+        const response = await listTheaterGroupApi.getAll();
+        const action = actListTheaterGroupSuccess(response);
+        dispatch(action);
+      } catch (error) {
+        const action = actListTheaterGroupFailed(error);
+        dispatch(action);
+      }
+    };
     fetchListMovie();
     fetchListTheater();
     fetchListMoviePag();
+    fetchListTheaterGroup();
   }, [dispatch]);
  
   return (
@@ -109,7 +138,7 @@ function HomePage(props) {
       <Filmlist listMovie={listMovie.data}
                 listMoviePag={listMoviePag.data}
        />
-       <Showtime listTheater={listTheater.data} listMovie={listMovie.data} />
+       <Showtime listTheater={listTheater.data} listMovie={listMovie.data} listTheaterGroup={listTheaterGroup.data}/>
        <News />
        <App />
        <Footer />

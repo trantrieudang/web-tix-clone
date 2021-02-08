@@ -2,30 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 export default function Showtime(props) {
   const { listTheater, listMovie } = props;
+ 
 
   const renderListTheater1 = () => {
     if (listTheater !== null) {
-      console.log(listTheater);
+      
       return listTheater.map((item) => (
-        <Link
+        <div
           key={item.biDanh}
-          to="/"
+          
           className="list-group-item list-group-item-action active bg-white"
           id="list-home-list"
           data-toggle="list"
-          href="#bhd"
+          href= "bhd"
           role="tab"
           aria-controls="home"
         >
           <img src={item.logo} alt={item.logo} />
-        </Link>
+        </div>
       ));
     }
   };
 
   const renderListTheater2 = () => {
     if (listTheater !== null) {
-      console.log(listTheater);
+     
       return listTheater.map((item) => (
         <div
           className="showTime__sublist list-group-item list-group-item-action active bg-white d-flex "
@@ -55,7 +56,7 @@ export default function Showtime(props) {
 
   const renderListTheater3 = () => {
     if (listMovie !== null) {
-      console.log(listMovie);
+      
       return listMovie.map((item) => (
         <div className="showTime__movie" key={item.maPhim}>
           <div className="showTime__movie-panel">
@@ -112,7 +113,7 @@ export default function Showtime(props) {
             <div className="tab-content" id="tab-sublist">
               <div
                 className="tab-pane fade show active"
-                id="bhd"
+                id="BHDStar"
                 role="tabpanel"
                 aria-labelledby="list-home-list"
               >

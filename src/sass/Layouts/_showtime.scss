@@ -1,3 +1,6 @@
+.list-group{
+    border-radius: 0px !important;
+}
 .showTime {
      padding-top: 120px;
      padding-bottom: 120px;
@@ -8,9 +11,10 @@
              .left-content {
                  padding: 0;
                  margin: 0;
-                 
+                 cursor: pointer;
                  .list-group {
                      border: 1px solid $color-gray-6;
+                     border-right: 0px !important;
                     height: 100%;
                     width: 60%;
                     margin: 0 !important;
@@ -30,8 +34,10 @@
                              left: 50%;
                              width: calc(100% - 40px);
                              transform: translateX(-50%);
-                             border-bottom: 1px solid #fff;
+                             border-bottom: 2px solid #ff671f !important;
+                             box-shadow: 0 0px 25px #fc9a38;
                              border-color: rgba(238, 238, 238, 0.88);
+                             
                          }
                      }
                  }
@@ -43,39 +49,45 @@
                      .showTime__items-left-2 {
                          padding-right: 0 !important;
                          border-right: 1px solid $color-gray-6 !important;
-                         .showTime__sublist {
-                             border: none !important;
-                             cursor: pointer;
- 
-                             img {
-                                 width: 50px;
-                                 height: 50px;
-                             }
-                             &::after {
-                                 content: '';
-                                 position: absolute;
-                                 bottom: 0;
-                                 left: 50%;
-                                 width: calc(100% - 40px);
-                                 transform: translateX(-50%);
-                                 border-bottom: 1px solid #fff;
-                                 border-color: rgba(238, 238, 238, 0.88);
-                             }
-                             .movieCinema {
-                                 color: black;
-                                 margin-left: 15px;
-                                 span {
-                                     display: block;
-                                     text-align: justify;
-                                     overflow: hidden;
-                                     text-overflow: ellipsis;
-                                     font-size: 12px;
-                                     color: #949494;
-                                     white-space: normal;
-                                     line-height: 1.4;
-                                 }
-                             }
+                         #list-tab{
+                            #list-home-list{
+                                border: none !important;
+                                cursor: pointer;
+                                margin-bottom: 10px;
+                                img {
+                                    width: 50px;
+                                    height: 50px;
+                                }
+                               
+                                .movieCinema {
+                                    color: black;
+                                    margin-left: 15px;
+                                    span {
+                                        display: block;
+                                        text-align: justify;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        font-size: 12px;
+                                        color: #949494;
+                                        white-space: normal;
+                                        line-height: 1.4;
+                                    }
+                                }
+                                &::after {
+                                   content: '';
+                                   position: absolute;
+                                    bottom: 0;
+                                    
+                                   left: 50%;
+                                   width: calc(100% - 40px);
+                                   transform: translateX(-50%);
+                                   border-bottom: 2px solid #ff671f !important;
+                                   box-shadow: 0 0px 25px #fc9a38;
+                                   border-color: rgba(238, 238, 238, 0.88);
+                               }
+                            }
                          }
+                         
                      }
                  }
                  .showTime__items-right-2 {
@@ -116,7 +128,8 @@
                                      left: 50%;
                                      width: calc(100% - 40px);
                                      transform: translateX(-50%);
-                                     border-bottom: 1px solid #fff;
+                                     border-bottom: 2px solid #ff671f !important;
+                                     box-shadow: 0 0px 25px #fc9a38;
                                      border-color: rgba(238, 238, 238, 0.88);
                                  }
                                  .showTime__movie-panel {
