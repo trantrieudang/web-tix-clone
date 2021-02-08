@@ -103,12 +103,12 @@ export default function Showtime(props) {
     <section className="showTime">
       <div className="showTime__content container">
         <div className="showTime__detail row">
-          <div className="col-2 left-content">
+          <div className="col-2 left-content d-flex justify-content-end">
             <div className="list-group" id="list-tab" role="tablist">
               {renderListTheater1()}
             </div>
           </div>
-          <div className="col-10 middle-content">
+          <div className="col-10 middle-content ">
             <div className="tab-content" id="tab-sublist">
               <div
                 className="tab-pane fade show active"
@@ -122,7 +122,7 @@ export default function Showtime(props) {
                       {renderListTheater2()}
                     </div>
                   </div>
-                  <div className="col-8 showTime__items-right-2">
+                  <div className="col-8  showTime__items-right-2">
                     <div className="tab-content" id="nav-tabContent">
                       <div
                         className="tab-pane fade show active"

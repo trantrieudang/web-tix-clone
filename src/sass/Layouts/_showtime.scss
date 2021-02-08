@@ -1,14 +1,19 @@
 .showTime {
      padding-top: 120px;
      padding-bottom: 120px;
-    width: 75%;
+    width: 70%;
     margin: 0 auto;
      .showTime__content {
          .showTime__detail {
              .left-content {
+                 padding: 0;
+                 margin: 0;
+                 
                  .list-group {
                      border: 1px solid $color-gray-6;
- 
+                    height: 100%;
+                    width: 60%;
+                    margin: 0 !important;
                      .list-group-item {
                          padding: 20px;
                          width: 90px;
