@@ -6,6 +6,7 @@
           max-width: 940px;
           margin: auto;
           height: 80px;
+          line-height: 50px;
           width: 100%;
          position: absolute;
          bottom: 0;
@@ -17,17 +18,32 @@
          background-color: #fff;
          box-shadow: 0 0 10px rgba(0,0,0,.3);
          .collapse {
+             
              .navbar-nav {
+                 width: 100%;
+                 
                  .nav-item {
-                     
-                     padding: 0 40px;
-                     @include styleText($color-gray-7 !important, $fs-0, $fw-normal);
-                     a {
-                         color: $color-black-0;
-                     }
+                    font-size: 14px;
+                    
+                    text-overflow: ellipsis;
+                    
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        
+                        height: 50%;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        border-right: 1px solid #fff;
+                        border-right-color: rgba(238,238,238,.88);
+                    }
+                    
                  }
+                 
              }
          }
      }
  }
- 
+ .dropdown-toggle::after{
+     display: none;
+ }

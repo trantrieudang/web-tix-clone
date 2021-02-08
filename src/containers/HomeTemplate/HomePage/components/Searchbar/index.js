@@ -54,24 +54,15 @@ function Searchbar(props) {
   return (
     <section className="searchBar">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+        
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className="first nav-item active" style={{width: '30%'}}>
               <NavLink
-                className="nav-link dropdown-toggle"
+              
+                className=" nav-link dropdown-toggle"
                 to="/"
-                id="navbarDropdown"
+                id="selectFilm"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -79,16 +70,16 @@ function Searchbar(props) {
               >
                 {movieName}
               </NavLink>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="selectFilm" >
                 {renderListMovie()}
                 
               </div>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown" style={{width: 'calc(70%/4)'}}>
               <NavLink
                 className="nav-link dropdown-toggle"
                 to="/"
-                id="navbarDropdown"
+                id="selectCinema"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -96,15 +87,15 @@ function Searchbar(props) {
               >
                 {theaterName}
               </NavLink>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="selectCinema">
                 {renderListTheater()}
               </div>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown" style={{width: 'calc(70%/4)'}}>
               <NavLink
                 className="nav-link dropdown-toggle"
                 to="/"
-                id="navbarDropdown"
+                id="selectDate"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -112,17 +103,17 @@ function Searchbar(props) {
               >
                 Ngày xem
               </NavLink>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="selectDate">
                 <Link className="dropdown-item"  to="/">
                   Vui Lòng chọn phim và rạp
                 </Link>
               </div>
             </li>
-            <li className="nav-item dropdown">
+            <li className=" nav-item dropdown" style={{width: 'calc(70%/4)'}}>
               <NavLink
                 className="nav-link dropdown-toggle"
                 to="/"
-                id="navbarDropdown"
+                id="selectSession"
                 role="button"
                 data-toggle="dropdown"
                 aria-haspopup="true"
@@ -130,18 +121,19 @@ function Searchbar(props) {
               >
                 Suất chiếu
               </NavLink>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div className="dropdown-menu" aria-labelledby="selectSession">
                 <Link className="dropdown-item" to="/">
                   Vui Lòng chọn phim , rạp và ngày xem
                 </Link>
               </div>
             </li>
-          </ul>
-          <form className="form-inline my-2 my-lg-0">
-            <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+            <button className="btnBuyTicket btn btn-secondary my-2 my-sm-0" type="submit" style={{width: 'calc(70%/4)'}}>
               MUA VÉ NGAY
             </button>
-          </form>
+          </ul>
+          
+            
+          
         </div>
       </nav>
     </section>
