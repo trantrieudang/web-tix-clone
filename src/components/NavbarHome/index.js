@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import webLogo from "../../assets/images/web-logo.png";
 import avatarPic from "../../assets/images/avatar.png";
 import locatLogo from "../../assets/images/location-header.png";
+
+
 const locatLists = [
   { id: 1, name: "Hồ Chí Minh" },
   { id: 2, name: "Hà Nội" },
@@ -28,9 +30,9 @@ export default function NavbarHome() {
     <header className="header">
       <div className="header__content d-flex">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="#homePage_Link">
             <img className="webLogo" src={webLogo} alt={webLogo} />
-          </Link>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -45,30 +47,30 @@ export default function NavbarHome() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <Link className="nav-link" to="/">
+                <a className="nav-link" href="#filmList_Link">
                   Lịch chiếu
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <a className="nav-link" href="#showTime_Link">
                   Cụm rạp
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <a className="nav-link" href="#new_Link">
                   Tin Tức
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <a className="nav-link" href="#app_Link">
                   Ứng dụng
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
           <div className="right">
           <div className="log-in">
-            <Link className="titleDisplay" to="/">
+            <Link className="titleDisplay" to="/auth">
               <img src={avatarPic} alt={avatarPic} />
               <span className="titleLogin">Đăng nhập</span>
             </Link>

@@ -9,7 +9,7 @@ const routesHome = [
     path: "/",
     component: HomePage,
   },
- 
+  
 ];
 
 const routesAdmin = [

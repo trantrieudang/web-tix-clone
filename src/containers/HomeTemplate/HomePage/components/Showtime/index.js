@@ -101,7 +101,7 @@ export default function Showtime(props) {
   };
 
   return (
-    <section className="showTime">
+    <section className="showTime" id="showTime_Link">
       <div className="showTime__content container">
         <div className="showTime__detail row">
           <div className="col-2 left-content d-flex justify-content-end">

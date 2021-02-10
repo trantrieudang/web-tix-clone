@@ -4,7 +4,7 @@ import Like from '../../../../../assets/images/like.png';
 import Comment from '../../../../../assets/images/comment.png';
 export default function News() {
   return (
-    <section className="new">
+    <section className="new" id="new_Link">
       <div className="new__content container">
         <div className="col-xl-12 new__tittle">
           <ul
