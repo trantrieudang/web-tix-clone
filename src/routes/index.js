@@ -1,5 +1,5 @@
-import HomePage from "./../containers/HomeTemplate/HomePage";
-import Login from "./../containers/AdminTemplate/AuthPage/components/Login";
+import HomePage from "../containers/HomeTemplate/HomePage";
+import Login from "../containers/AdminTemplate/AuthPage/components/Login";
 
 import DashboardPage from "../containers/AdminTemplate/DashboardPage";
 
