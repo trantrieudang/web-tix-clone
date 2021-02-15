@@ -52,7 +52,7 @@ function App() {
           {showLayoutAdmin(routesAdmin)}
 
           
-          <Route exact={false} path="/auth" component={Login} />
+          <Route exact={false} path="/login" component={Login} />
           {/* Trang K tim thay */}
           <Route path="" component={PageNotFound} />
         </Switch>

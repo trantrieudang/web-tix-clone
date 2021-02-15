@@ -70,7 +70,7 @@ export default function NavbarHome() {
           </div>
           <div className="right">
           <div className="log-in">
-            <Link className="titleDisplay" to="/auth">
+            <Link className="titleDisplay" to="/login">
               <img src={avatarPic} alt={avatarPic} />
               <span className="titleLogin">Đăng nhập</span>
             </Link>
