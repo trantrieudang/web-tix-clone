@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Avatar,
+  Box,
   Button,
   LinearProgress,
   makeStyles,
@@ -14,6 +15,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import bg from "../../../../../assets/images/backapp.jpg";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   register: {
     position: "relative",
@@ -102,6 +104,13 @@ const useStyles = makeStyles((theme) => ({
       color: "black",
     },
   },
+  linkLogin:{
+    color: 'red',
+    '&:hover':{
+      textDecoration: 'none',
+      color: 'orange',
+    }
+  }
 }));
 
 RegisterForm.propTypes = {
@@ -211,6 +220,11 @@ function RegisterForm(props) {
             Create an account
           </Button>
         </form>
+        <Box textAlign="center">
+                <Link className={classes.linkLogin} to='/login'>
+                Already have an account. Login here
+                </Link>
+              </Box>
       </div>
     
     

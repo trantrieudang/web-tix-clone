@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Avatar,
+  Box,
   Button, IconButton, LinearProgress,
   makeStyles,
   Typography
@@ -9,11 +10,13 @@ import { Close, LockOutlined } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import * as yup from "yup";
 import bg from "../../../../../assets/images/backapp.jpg";
 import InputField from "../../../../../components/form-controls/InputField";
 import PasswordField from "../../../../../components/form-controls/PasswordField";
+
+
 
 const useStyles = makeStyles((theme) => ({
   login: {
@@ -108,11 +111,21 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.grey[500],
     zIndex: 1,
   },
+  linkRegister:{
+    color: 'red',
+    '&:hover':{
+      textDecoration: 'none',
+      color: 'orange',
+    }
+  }
 }));
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func,
 };
+
+
+
 
 function LoginForm(props) {
   const history = useHistory();
@@ -141,7 +154,7 @@ function LoginForm(props) {
   };
 
   const { isSubmitting } = form.formState;
-
+  
   return (
     <div className={classes.login}>
       <div className={classes.root}>
@@ -186,6 +199,11 @@ function LoginForm(props) {
             Sign in
           </Button>
         </form>
+        <Box textAlign="center">
+                <Link className={classes.linkRegister} to='/register'>
+                  Don't have an account? Register here
+                </Link>
+              </Box>
       </div>
     </div>
   );

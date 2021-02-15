@@ -6,6 +6,7 @@ import locatLogo from "../../assets/images/location-header.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../containers/AdminTemplate/AuthPage/components/userSlice";
 
+
 const locatLists = [
   { id: 1, name: "Hồ Chí Minh" },
   { id: 2, name: "Hà Nội" },
@@ -19,6 +20,8 @@ const locatLists = [
   { id: 10, name: "Cần Thơ" },
   { id: 11, name: "Vũng Tàu" },
 ];
+
+
 
 export default function NavbarHome() {
   const [locatName, setLocatName] = useState("Hồ Chí Minh");
@@ -35,6 +38,9 @@ export default function NavbarHome() {
     const action = logout();
     dispatch(action);
   };
+
+
+
   return (
     <header className="header">
       <div className="header__content d-flex">
@@ -147,7 +153,7 @@ export default function NavbarHome() {
                 ))}
               </div>
             </div>
-          </div>
+          </div>  
         </nav>
       </div>
     </header>
