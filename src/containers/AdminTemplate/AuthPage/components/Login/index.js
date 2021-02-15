@@ -19,12 +19,12 @@ function Login(props) {
       const action = login(values);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
-
+      
       // close dialog
-      const { closeDialog } = props;
-      if (closeDialog) {
-        closeDialog();
-      }
+      // const { closeDialog } = props;
+      // if (closeDialog) {
+      //   closeDialog();
+      // }
     } catch (error) {
       console.log('Failed to login:', error);
       enqueueSnackbar(error.message, { variant: 'error' });

@@ -7,7 +7,7 @@ import { routesHome, routesAdmin } from "./routes";
 import Login from './containers/AdminTemplate/AuthPage/components/Login';
 import HomeTemplate from "./containers/HomeTemplate";
 import AdminTemplate from "./containers/AdminTemplate";
-
+import Register from './containers/AdminTemplate/AuthPage/components/Register';
 
 function App() {
   const showLayoutHome = (routes) => {
@@ -51,7 +51,7 @@ function App() {
           {showLayoutHome(routesHome)}
           {showLayoutAdmin(routesAdmin)}
 
-          
+          <Route exact={false} path="/register" component={Register} />
           <Route exact={false} path="/login" component={Login} />
           {/* Trang K tim thay */}
           <Route path="" component={PageNotFound} />
