@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import webLogo from "../../assets/images/web-logo.png";
 import avatarPic from "../../assets/images/avatar.png";
 import locatLogo from "../../assets/images/location-header.png";
-
-
+import { useDispatch, useSelector } from 'react-redux';
 const locatLists = [
   { id: 1, name: "Hồ Chí Minh" },
   { id: 2, name: "Hà Nội" },
@@ -19,13 +18,20 @@ const locatLists = [
   { id: 11, name: "Vũng Tàu" },
 ];
 
+
+
 export default function NavbarHome() {
      const [locatName, setLocatName] = useState("Hồ Chí Minh");
+
+     
      const handleChangeLocat = (e) => {
           console.log(e.target.value);
           setLocatName(e.target.value);
           
      };
+     
+     const loggedInUser = useSelector((state) => state.user.current);
+     const isLoggedIn = !!loggedInUser.taiKhoan;
   return (
     <header className="header">
       <div className="header__content d-flex">
@@ -70,10 +76,25 @@ export default function NavbarHome() {
           </div>
           <div className="right">
           <div className="log-in">
-            <Link className="titleDisplay" to="/login">
+          {!isLoggedIn && (<Link className="titleDisplay" to="/login">
               <img src={avatarPic} alt={avatarPic} />
-              <span className="titleLogin">Đăng nhập</span>
-            </Link>
+
+              
+
+<span className="titleLogin">Đăng nhập</span>
+              
+              
+            </Link>)}
+            {isLoggedIn && (<Link className="titleDisplay" to="/login">
+              <img src={avatarPic} alt={avatarPic} />
+
+              
+
+<span className="titleLogin">{loggedInUser.taiKhoan}</span>
+              
+              
+            </Link>)}
+            
           </div>
 
           <div className="dropdown address">

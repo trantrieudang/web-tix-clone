@@ -1,19 +1,19 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   Avatar,
-  Button,
-  LinearProgress,
+  Button, IconButton, LinearProgress,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
-import InputField from "../../../../../components/form-controls/InputField";
-import PasswordField from "../../../../../components/form-controls/PasswordField";
+import { Close, LockOutlined } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
 import * as yup from "yup";
 import bg from "../../../../../assets/images/backapp.jpg";
+import InputField from "../../../../../components/form-controls/InputField";
+import PasswordField from "../../../../../components/form-controls/PasswordField";
 const useStyles = makeStyles((theme) => ({
   login: {
     position: "relative",
@@ -100,6 +100,13 @@ const useStyles = makeStyles((theme) => ({
       color: "black",
     },
   },
+  closeButton: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    color: theme.palette.grey[500],
+    zIndex: 1,
+  },
 }));
 
 LoginForm.propTypes = {
@@ -107,8 +114,12 @@ LoginForm.propTypes = {
 };
 
 function LoginForm(props) {
+  const history = useHistory();
   const classes = useStyles();
-
+  
+  const handleClose = () => {
+    history.push('/');
+  };
   const schema = yup.object().shape({
     taiKhoan: yup.string().required("Please enter your username"),
     matKhau: yup.string().required("Please enter your password"),
@@ -134,7 +145,9 @@ function LoginForm(props) {
     <div className={classes.login}>
       <div className={classes.root}>
         {isSubmitting && <LinearProgress className={classes.progress} />}
-
+        <IconButton className={classes.closeButton} onClick={handleClose}>
+          <Close />
+        </IconButton>
         <Avatar className={classes.avatar}>
           <LockOutlined></LockOutlined>
         </Avatar>

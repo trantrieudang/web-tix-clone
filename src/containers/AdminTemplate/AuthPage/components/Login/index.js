@@ -5,24 +5,29 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import LoginForm from '../LoginForm';
-import { Redirect } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 Login.propTypes = {
   closeDialog: PropTypes.func,
 };
 
 function Login(props) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleSubmit = async (values, history) => {
+  const handleSubmit = async (values) => {
+    
     try {
       const action = login(values);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
-      console.log(unwrapResult(resultAction));
-      console.log(props);
-      <Redirect to='/' />;
+      if(unwrapResult(resultAction).maLoaiNguoiDung === 'QuanTri'){
+        history.push('/dashboard');
+      }else{
+        history.push('/');
+      }
+      
       // close dialog
       // const { closeDialog } = props;
       // if (closeDialog) {
