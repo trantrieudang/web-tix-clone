@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PageNotFound from "./containers/PageNotFound";
 
 import { routesHome, routesAdmin } from "./routes";
-
+import Login from './containers/AdminTemplate/AuthPage/components/Login';
 import HomeTemplate from "./containers/HomeTemplate";
 import AdminTemplate from "./containers/AdminTemplate";
 
@@ -52,7 +52,7 @@ function App() {
           {showLayoutAdmin(routesAdmin)}
 
           
-
+          <Route exact={false} path="/auth" component={Login} />
           {/* Trang K tim thay */}
           <Route path="" component={PageNotFound} />
         </Switch>
