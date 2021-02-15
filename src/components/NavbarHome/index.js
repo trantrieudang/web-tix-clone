@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import webLogo from "../../assets/images/web-logo.png";
 import avatarPic from "../../assets/images/avatar.png";
 import locatLogo from "../../assets/images/location-header.png";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../containers/AdminTemplate/AuthPage/components/userSlice";
+
 const locatLists = [
   { id: 1, name: "Hồ Chí Minh" },
   { id: 2, name: "Hà Nội" },
@@ -18,20 +20,21 @@ const locatLists = [
   { id: 11, name: "Vũng Tàu" },
 ];
 
-
-
 export default function NavbarHome() {
-     const [locatName, setLocatName] = useState("Hồ Chí Minh");
+  const [locatName, setLocatName] = useState("Hồ Chí Minh");
 
-     
-     const handleChangeLocat = (e) => {
-          console.log(e.target.value);
-          setLocatName(e.target.value);
-          
-     };
-     
-     const loggedInUser = useSelector((state) => state.user.current);
-     const isLoggedIn = !!loggedInUser.taiKhoan;
+  const handleChangeLocat = (e) => {
+    console.log(e.target.value);
+    setLocatName(e.target.value);
+  };
+  const dispatch = useDispatch();
+  const loggedInUser = useSelector((state) => state.user.current);
+  const isLoggedIn = !!loggedInUser.taiKhoan;
+
+  const handleLogoutClick = () => {
+    const action = logout();
+    dispatch(action);
+  };
   return (
     <header className="header">
       <div className="header__content d-flex">
@@ -75,53 +78,76 @@ export default function NavbarHome() {
             </ul>
           </div>
           <div className="right">
-          <div className="log-in">
-          {!isLoggedIn && (<Link className="titleDisplay" to="/login">
-              <img src={avatarPic} alt={avatarPic} />
+            <div className="log-in">
+              {!isLoggedIn && (
+                <Link className="titleDisplay" to="/login">
+                  <img src={avatarPic} alt={avatarPic} />
 
-              
+                  <span className="titleLogin">Đăng nhập</span>
+                </Link>
+              )}
+              {isLoggedIn && (
+                <div className="titleDisplay dropdown">
+                  <img src={avatarPic} alt={avatarPic} />
 
-<span className="titleLogin">Đăng nhập</span>
-              
-              
-            </Link>)}
-            {isLoggedIn && (<Link className="titleDisplay" to="/login">
-              <img src={avatarPic} alt={avatarPic} />
+                  <span
+                    className="titleLogin dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {loggedInUser.taiKhoan}
+                  </span>
 
-              
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a
+                      class="dropdown-item"
+                      href="/"
+                      onClick={handleLogoutClick}
+                    >
+                      Đăng thóat
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
 
-<span className="titleLogin">{loggedInUser.taiKhoan}</span>
-              
-              
-            </Link>)}
-            
-          </div>
+            <div className="dropdown address">
+              <button
+                className="btn btn-secondary dropdown-toggle bg-white text-dark address__drop"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img className="locatImage" src={locatLogo} alt={locatLogo} />
 
-          <div className="dropdown address">
-            <button
-              className="btn btn-secondary dropdown-toggle bg-white text-dark address__drop"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              
-              
-            >
-              <img className="locatImage" src={locatLogo} alt={locatLogo} />
-              
-              {locatName}
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              {locatLists.map((item) => (
-               <button className="dropdown-item" type="button" key={item.id} value={item.name} onClick={handleChangeLocat}>
-                  {item.name}
-                </button>
-              ))}
+                {locatName}
+              </button>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
+                {locatLists.map((item) => (
+                  <button
+                    className="dropdown-item"
+                    type="button"
+                    key={item.id}
+                    value={item.name}
+                    onClick={handleChangeLocat}
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          </div>
-          
         </nav>
       </div>
     </header>
