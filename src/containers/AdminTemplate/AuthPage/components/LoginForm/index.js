@@ -110,13 +110,13 @@ function LoginForm(props) {
   const classes = useStyles();
 
   const schema = yup.object().shape({
-    username: yup.string().required("Please enter your username"),
-    password: yup.string().required("Please enter your password"),
+    taiKhoan: yup.string().required("Please enter your username"),
+    matKhau: yup.string().required("Please enter your password"),
   });
   const form = useForm({
     defaultValues: {
-      username: "",
-      password: "",
+      taiKhoan: "",
+      matKhau: "",
     },
     resolver: yupResolver(schema),
   });
@@ -148,13 +148,13 @@ function LoginForm(props) {
           className={classes.form}
         >
           <InputField
-            name="username"
+            name="taiKhoan"
             label="Username"
             form={form}
             className={classes.input}
           />
           <PasswordField
-            name="password"
+            name="matKhau"
             label="Password"
             form={form}
             className={classes.input}
