@@ -13,7 +13,7 @@ import "../node_modules/popper.js/dist/umd/popper.min";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './sass/main.scss';
-
+import { SnackbarProvider } from 'notistack';
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -21,7 +21,9 @@ import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
+    <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
     <App />
+    </SnackbarProvider>
   </Provider>,
   document.getElementById("root")
 );

@@ -1,5 +1,5 @@
 import HomePage from "./../containers/HomeTemplate/HomePage";
-import AuthPage from "./../containers/AdminTemplate/AuthPage";
+import Login from "./../containers/AdminTemplate/AuthPage/components/Login";
 
 import DashboardPage from "../containers/AdminTemplate/DashboardPage";
 
@@ -21,7 +21,7 @@ const routesAdmin = [
   {
     exact: false,
     path: "/auth",
-    component: AuthPage,
+    component: Login,
   },
 ];
 
