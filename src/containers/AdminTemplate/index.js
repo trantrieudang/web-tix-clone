@@ -22,7 +22,7 @@ export default function AdminTemplate({ Component, ...props }) {
             </AdminLayout>
           );
         }
-        return <Redirect to="/" />;
+        return <Redirect to="/dashboard" />;
       }}
     />
   );

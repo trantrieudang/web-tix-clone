@@ -7,9 +7,9 @@ export const register = createAsyncThunk('user/register', async (payload) => {
 
   // save data to local storage
   localStorage.setItem(StorageKeys.TOKEN, data.accessToken);
-  localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
+  localStorage.setItem(StorageKeys.USER, JSON.stringify(data));
 
-  return data.user;
+  return data;
 });
 
 export const login = createAsyncThunk('user/login', async (payload) => {
@@ -19,7 +19,7 @@ export const login = createAsyncThunk('user/login', async (payload) => {
   localStorage.setItem(StorageKeys.TOKEN, data.accessToken);
   localStorage.setItem(StorageKeys.USER, JSON.stringify(data));
 
-  return data.user;
+  return data;
 });
 
 const userSlice = createSlice({
