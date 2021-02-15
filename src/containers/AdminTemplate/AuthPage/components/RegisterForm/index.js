@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100vw',
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
+    
   },
   root: {
     position: "absolute",
@@ -155,7 +156,9 @@ function RegisterForm(props) {
   const { isSubmitting } = form.formState;
 
   return (
-    <div clasName={classes.register}>
+    <div className={classes.register}>
+
+
       <div className={classes.root}>
         {isSubmitting && <LinearProgress className={classes.progress} />}
 
@@ -209,6 +212,8 @@ function RegisterForm(props) {
           </Button>
         </form>
       </div>
+    
+    
     </div>
   );
 }
