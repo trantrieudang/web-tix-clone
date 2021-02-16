@@ -3,16 +3,16 @@ import {
   Avatar,
   Box,
   Button,
-  Grid,
+  Grid,IconButton,
   LinearProgress,
   makeStyles,
   Typography
 } from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
+import { Close,LockOutlined } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import bg from "../../../../../assets/images/backapp.jpg";
 import InputField from "../../../../../components/form-controls/InputField";
@@ -115,7 +115,14 @@ const useStyles = makeStyles((theme) => ({
   },
   selectUserType:{
     marginTop: theme.spacing(2)
-  }
+  },
+  closeButton: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    color: theme.palette.grey[500],
+    zIndex: 1,
+  },
 }));
 
 RegisterForm.propTypes = {
@@ -169,14 +176,19 @@ function RegisterForm(props) {
       await onSubmit(values);
     }
   };
-  
+  const history = useHistory();
+  const handleClose = () => {
+    history.push('/');
+  };
   const { isSubmitting } = form.formState;
 
   return (
     <div className={classes.register}>
       <div className={classes.root}>
         {isSubmitting && <LinearProgress className={classes.progress} />}
-
+        <IconButton className={classes.closeButton} onClick={handleClose}>
+          <Close />
+        </IconButton>
         <Avatar className={classes.avatar}>
           <LockOutlined></LockOutlined>
         </Avatar>
