@@ -6,29 +6,43 @@ import star2 from "../../../../../assets/images/star1.2.png";
 import playIcon from "../../../../../assets/images/play-video.png";
 import ModalVideo from "react-modal-video";
 
-
-
 function SampleNextArrow(props) {
-     const { className, style, onClick } = props;
-     return (
-       <div
-         className={className}
-         style={{ ...style, position: 'absolute', left: '100%', top: '45%',width: '50px',height: '50px',  textAlign: 'center'}}
-         onClick={onClick}
-       />
-     );
-   }
-   
-   function SamplePrevArrow(props) {
-     const { className, style, onClick } = props;
-     return (
-       <div
-         className={className}
-         style={{ ...style,position: 'absolute', left: '-100px', top: '45%',width: '50px', height: '50px' ,textAlign: 'center'}}
-         onClick={onClick}
-       />
-     );
-   }
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        position: "absolute",
+        left: "100%",
+        top: "45%",
+        width: "50px",
+        height: "50px",
+        textAlign: "center",
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        position: "absolute",
+        left: "-100px",
+        top: "45%",
+        width: "50px",
+        height: "50px",
+        textAlign: "center",
+      }}
+      onClick={onClick}
+    />
+  );
+}
 export default function Filmlist(props) {
   const [isOpen, setOpen] = useState(false);
   const [video, setVideo] = useState("");
@@ -38,13 +52,13 @@ export default function Filmlist(props) {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
-     
+
     arrows: true,
     rows: 2,
 
     autoplay: false,
     nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />
+    prevArrow: <SamplePrevArrow />,
   };
 
   const { listMovie } = props;
@@ -121,9 +135,9 @@ export default function Filmlist(props) {
             role="tablist"
           >
             <li className="nav-item" role="presentation">
-              <NavLink
+              <a
                 className="nav-link active filmList__link"
-                to="#DangChieu"
+                href="#DangChieu"
                 id="dangChieu-tab"
                 data-toggle="tab"
                 role="tab"
@@ -131,12 +145,12 @@ export default function Filmlist(props) {
                 aria-selected="true"
               >
                 Đang Chiếu
-              </NavLink>
+              </a>
             </li>
             <li className="nav-item" role="presentation">
-              <NavLink
+              <a
                 className="nav-link filmList__link"
-                to="#SapChieu"
+                href="#SapChieu"
                 id="sapChieu-tab"
                 data-toggle="tab"
                 role="tab"
@@ -144,7 +158,7 @@ export default function Filmlist(props) {
                 aria-selected="false"
               >
                 Sắp chiếu
-              </NavLink>
+              </a>
             </li>
           </ul>
         </div>
@@ -174,7 +188,16 @@ export default function Filmlist(props) {
             id="SapChieu"
             role="tabpanel"
             aria-labelledby="sapChieu-tab"
-          ></div>
+          >
+            <Slider {...settings}>{renderListMovie()}</Slider>
+            <ModalVideo
+              channel="youtube"
+              autoplay
+              isOpen={isOpen}
+              videoId={video}
+              onClose={() => setOpen(false)}
+            />
+          </div>
         </div>
       </div>
     </section>

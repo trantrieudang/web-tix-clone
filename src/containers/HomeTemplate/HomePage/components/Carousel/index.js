@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
     position: "absolute",
     width: "100%",
     height: "100%",
-    top: '10px',
+    // top: '10px',
     background: "linear-gradient(to top,#000,transparent 20%)",
   },
 }));
@@ -71,7 +71,8 @@ const carouselItems = [
 
 
 export default function Carousell() {
-
+  
+  
   const classes = useStyles();
   const [isOpen, setOpen] = useState(false)
   const [video, setVideo] = useState('')

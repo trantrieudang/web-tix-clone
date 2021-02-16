@@ -133,7 +133,7 @@ function HomePage(props) {
   return (
     
     <div id="homePage_Link">
-      <Carousel />
+      <Carousel listMovie={listMovie.data}/>
       <Searchbar listMovie={listMovie.data} listTheater={listTheater.data}/>
       <Filmlist listMovie={listMovie.data}
                 listMoviePag={listMoviePag.data}

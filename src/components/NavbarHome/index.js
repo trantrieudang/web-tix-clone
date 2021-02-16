@@ -6,22 +6,19 @@ import locatLogo from "../../assets/images/location-header.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../containers/AdminTemplate/AuthPage/components/userSlice";
 
-
-const locatLists = [
-  { id: 1, name: "Hồ Chí Minh" },
-  { id: 2, name: "Hà Nội" },
-  { id: 3, name: "Đà Nẵng" },
-  { id: 4, name: "Hải Phòng" },
-  { id: 5, name: "Biên Hòa" },
-  { id: 6, name: "Nha Trang" },
-  { id: 7, name: "Bình Dương" },
-  { id: 8, name: "Phan Thiết" },
-  { id: 9, name: "Hạ Long" },
-  { id: 10, name: "Cần Thơ" },
-  { id: 11, name: "Vũng Tàu" },
-];
-
-
+// const locatLists = [
+//   { id: 1, name: "Hồ Chí Minh" },
+//   { id: 2, name: "Hà Nội" },
+//   { id: 3, name: "Đà Nẵng" },
+//   { id: 4, name: "Hải Phòng" },
+//   { id: 5, name: "Biên Hòa" },
+//   { id: 6, name: "Nha Trang" },
+//   { id: 7, name: "Bình Dương" },
+//   { id: 8, name: "Phan Thiết" },
+//   { id: 9, name: "Hạ Long" },
+//   { id: 10, name: "Cần Thơ" },
+//   { id: 11, name: "Vũng Tàu" },
+// ];
 
 export default function NavbarHome() {
   const [locatName, setLocatName] = useState("Hồ Chí Minh");
@@ -38,8 +35,6 @@ export default function NavbarHome() {
     const action = logout();
     dispatch(action);
   };
-
-
 
   return (
     <header className="header">
@@ -83,47 +78,42 @@ export default function NavbarHome() {
               </li>
             </ul>
           </div>
-          <div className="right">
-            <div className="log-in">
-              {!isLoggedIn && (
-                <Link className="titleDisplay" to="/login">
-                  <img src={avatarPic} alt={avatarPic} />
 
+          {!isLoggedIn && (
+            <div className="right">
+              <div className="rightFirst">
+                <Link className="titleDisplay" to="/login">
                   <span className="titleLogin">Đăng nhập</span>
                 </Link>
-              )}
-              {isLoggedIn && (
-                <div className="titleDisplay dropdown">
-                  <img src={avatarPic} alt={avatarPic} />
-
-                  <span
-                    className="titleLogin dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    {loggedInUser.taiKhoan}
-                  </span>
-
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a
-                      class="dropdown-item"
-                      href="/"
-                      onClick={handleLogoutClick}
-                    >
-                      Đăng thóat
-                    </a>
-                  </div>
-                </div>
-              )}
+              </div>
+              <div className="rightSecond">
+                <Link className="titleDisplay" to="/register">
+                  <span className="titleRegister">Đăng ký</span>
+                </Link>
+              </div>
             </div>
+          )}
 
-            <div className="dropdown address">
+          {isLoggedIn && (
+            <div className="right">
+              <div className="rightFirst">
+                <img className="imgAccount" src={avatarPic} alt={avatarPic} />
+
+                <span className="titleLogin">{loggedInUser.taiKhoan}</span>
+              </div>
+              <div className="rightSecond">
+                <Link
+                  className="titleDisplay"
+                  to="/"
+                  onClick={handleLogoutClick}
+                >
+                  <span className="titleLogOut">Đăng thoát</span>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* <div className="dropdown address">
               <button
                 className="btn btn-secondary dropdown-toggle bg-white text-dark address__drop"
                 type="button"
@@ -152,8 +142,7 @@ export default function NavbarHome() {
                   </button>
                 ))}
               </div>
-            </div>
-          </div>  
+            </div> */}
         </nav>
       </div>
     </header>

@@ -28,6 +28,7 @@
 
 .carouselBg{
      position: relative;
+     top: -10px;
      &:hover .btnTrailer{
           visibility: visible !important;
           opacity: .7;

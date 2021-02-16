@@ -22,7 +22,7 @@ function Searchbar(props) {
       console.log(listMovie);
       return listMovie.map((item) => (
         <button
-          className="dropdown-item" 
+          className="dropdown-item"
           to="/"
           key={item.maPhim}
           value={item.tenPhim}
