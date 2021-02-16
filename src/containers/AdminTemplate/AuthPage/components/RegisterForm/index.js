@@ -3,28 +3,29 @@ import {
   Avatar,
   Box,
   Button,
+  Grid,
   LinearProgress,
   makeStyles,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import { LockOutlined } from "@material-ui/icons";
-import InputField from "../../../../../components/form-controls/InputField";
-import PasswordField from "../../../../../components/form-controls/PasswordField";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import bg from "../../../../../assets/images/backapp.jpg";
-import { Link } from "react-router-dom";
+import InputField from "../../../../../components/form-controls/InputField";
+import PasswordField from "../../../../../components/form-controls/PasswordField";
+
 const useStyles = makeStyles((theme) => ({
   register: {
     position: "relative",
     backgroundImage: "url(" + bg + ")",
     height: "100vh",
-    width: '100vw',
+    width: "100vw",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    
   },
   root: {
     position: "absolute",
@@ -33,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(3),
-    width: "25%",
+    width: "30%",
+    
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -47,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    margin: theme.spacing(1, 0, 2, 0),
+    margin: theme.spacing(1, 0, 1, 0),
     textAlign: "center",
   },
 
@@ -104,12 +106,15 @@ const useStyles = makeStyles((theme) => ({
       color: "black",
     },
   },
-  linkLogin:{
-    color: 'red',
-    '&:hover':{
-      textDecoration: 'none',
-      color: 'orange',
-    }
+  linkLogin: {
+    color: "red",
+    "&:hover": {
+      textDecoration: "none",
+      color: "orange",
+    },
+  },
+  selectUserType:{
+    marginTop: theme.spacing(2)
   }
 }));
 
@@ -121,9 +126,10 @@ function RegisterForm(props) {
   const classes = useStyles();
 
   const schema = yup.object().shape({
-    fullName: yup
+    taiKhoan: yup.string().required("Please enter your user name."),
+    hoTen: yup
       .string()
-      .required("Please enter your full name.")
+      .required("Please enter your user name.")
       .test(
         "should has at least two words",
         "Please enter at least two words.",
@@ -136,21 +142,23 @@ function RegisterForm(props) {
       .string()
       .required("Please enter your email.")
       .email("Please enter a valid email address."),
-    password: yup
+      soDt: yup
+      .string()
+      .required("Please enter your phone number.")
+      ,
+    matKhau: yup
       .string()
       .required("Please enter your password")
       .min(6, "Please enter at least 6 characters."),
-    retypePassword: yup
-      .string()
-      .required("Please retype your password.")
-      .oneOf([yup.ref("password")], "Password does not match"),
   });
   const form = useForm({
     defaultValues: {
-      fullName: "",
+      taiKhoan: "",
+      hoTen: "",
       email: "",
-      password: "",
-      retypePassword: "",
+      matKhau: "",
+      soDt: "",
+      maLoaiNguoiDung: "KhachHang",
     },
     resolver: yupResolver(schema),
   });
@@ -161,13 +169,11 @@ function RegisterForm(props) {
       await onSubmit(values);
     }
   };
-
+  
   const { isSubmitting } = form.formState;
 
   return (
     <div className={classes.register}>
-
-
       <div className={classes.root}>
         {isSubmitting && <LinearProgress className={classes.progress} />}
 
@@ -183,51 +189,76 @@ function RegisterForm(props) {
           onSubmit={form.handleSubmit(handleSubmit)}
           className={classes.form}
         >
-          <InputField
-            name="fullName"
-            label="Full Name"
-            form={form}
-            className={classes.input}
-          />
-          <InputField
-            name="email"
-            label="Email"
-            form={form}
-            className={classes.input}
-          />
-          <PasswordField
-            name="password"
-            label="Password"
-            form={form}
-            className={classes.input}
-          />
-          <PasswordField
-            name="retypePassword"
-            label="Retype Password"
-            form={form}
-            className={classes.input}
-          />
-
-          <Button
-            disabled={isSubmitting}
-            type="submit"
-            className={classes.submit}
-            variant="contained"
-            color="primary"
-            fullWidth
-            size="large"
-          >
-            Create an account
-          </Button>
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
+              <InputField
+                name="taiKhoan"
+                label="User Name"
+                form={form}
+                className={classes.input}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <InputField
+                name="hoTen"
+                label="Full Name"
+                form={form}
+                className={classes.input}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <InputField
+                name="email"
+                label="Email"
+                form={form}
+                className={classes.input}
+              />
+            </Grid>
+            <Grid item xs={6}>
+            <InputField
+                name="soDt"
+                label="Phone Number"
+                form={form}
+                className={classes.input}
+                
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <PasswordField
+                name="matKhau"
+                label="Password"
+                form={form}
+                className={classes.input}
+              />
+            </Grid>
+            <Grid item xs={6}>
+            <InputField
+                name="maLoaiNguoiDung"
+                label="User Type"
+                form={form}
+                className={classes.input}
+                disabled
+              />
+            </Grid>
+            <Button
+              disabled={isSubmitting}
+              type="submit"
+              className={classes.submit}
+              variant="contained"
+              color="primary"
+              fullWidth
+              size="large"
+            >
+              Create an account
+            </Button>
+          </Grid>
         </form>
         <Box textAlign="center">
-                <Link className={classes.linkLogin} to='/login'>
-                Already have an account. Login here
-                </Link>
-              </Box>
+          <Link className={classes.linkLogin} to="/login">
+            Already have an account. Login here
+          </Link>
+        </Box>
       </div>
-    
-    
     </div>
   );
 }

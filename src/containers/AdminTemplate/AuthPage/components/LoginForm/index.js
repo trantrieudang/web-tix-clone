@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(3),
-    width: "25%",
+    width: "30%",
+    
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    margin: theme.spacing(1, 0, 2, 0),
+    margin: theme.spacing(1, 0, 1, 0),
     textAlign: "center",
   },
 

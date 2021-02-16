@@ -23,6 +23,7 @@ function Login(props) {
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
       if(unwrapResult(resultAction).maLoaiNguoiDung === 'QuanTri'){
+        localStorage.setItem("UserAdmin", JSON.stringify(unwrapResult(resultAction)));
         history.push('/dashboard');
       }else{
         history.push('/');
