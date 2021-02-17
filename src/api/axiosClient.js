@@ -13,7 +13,7 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
      function (config) {
       let accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZHBuZ3V5ZW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJRdWFuVHJpIiwibmJmIjoxNjA0NzM2NjA2LCJleHAiOjE2MDQ3NDAyMDZ9.qbG6QVtnSuJ_jeboPfq8AWY7rGeU5GMP2bsT6IN3tUU';
-
+      
        // Do something before request is sent
        config.headers.Authorization = `Bearer ${accessToken}`;
        return config;

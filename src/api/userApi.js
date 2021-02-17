@@ -10,7 +10,7 @@ const userApi = {
     return axiosClient.get(url, data);
   },
      register(data) {
-          const url = '/QuanLyNguoiDung/DangKy';
+          const url = '/QuanLyNguoiDung/ThemNguoiDung';
           return axiosClient.post(url, data);
         },
       

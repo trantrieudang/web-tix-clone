@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React
+ 
+from "react";
 import { Link } from "react-router-dom";
 import webLogo from "../../assets/images/web-logo.png";
 import avatarPic from "../../assets/images/avatar.png";
-import locatLogo from "../../assets/images/location-header.png";
+// import locatLogo from "../../assets/images/location-header.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../containers/AdminTemplate/AuthPage/components/userSlice";
 
@@ -21,12 +23,12 @@ import { logout } from "../../containers/AdminTemplate/AuthPage/components/userS
 // ];
 
 export default function NavbarHome() {
-  const [locatName, setLocatName] = useState("Hồ Chí Minh");
+  // const [locatName, setLocatName] = useState("Hồ Chí Minh");
 
-  const handleChangeLocat = (e) => {
-    console.log(e.target.value);
-    setLocatName(e.target.value);
-  };
+  // const handleChangeLocat = (e) => {
+  //   console.log(e.target.value);
+  //   setLocatName(e.target.value);
+  // };
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.taiKhoan;

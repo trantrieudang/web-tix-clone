@@ -153,6 +153,9 @@ function RegisterForm(props) {
       .string()
       .required("Please enter your phone number.")
       ,
+      maNhom: yup
+      .string()
+      .required("Please enter your group code."),
     matKhau: yup
       .string()
       .required("Please enter your password")
@@ -165,6 +168,7 @@ function RegisterForm(props) {
       email: "",
       matKhau: "",
       soDt: "",
+      maNhom: "GP02",
       maLoaiNguoiDung: "KhachHang",
     },
     resolver: yupResolver(schema),
@@ -218,7 +222,7 @@ function RegisterForm(props) {
                 className={classes.input}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
               <InputField
                 name="email"
                 label="Email"
@@ -247,6 +251,15 @@ function RegisterForm(props) {
             <InputField
                 name="maLoaiNguoiDung"
                 label="User Type"
+                form={form}
+                className={classes.input}
+                disabled
+              />
+            </Grid>
+            <Grid item xs={6}>
+            <InputField
+                name="maNhom"
+                label="User Group Type"
                 form={form}
                 className={classes.input}
                 disabled

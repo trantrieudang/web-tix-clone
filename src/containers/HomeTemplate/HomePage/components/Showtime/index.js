@@ -1,5 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import bhd1 from '../../../../../assets/images/bhd1.png';
+import bhd2 from '../../../../../assets/images/bhd2.png';
+import bhd3 from '../../../../../assets/images/bhd3.png';
+import bhd4 from '../../../../../assets/images/bhd4.png';
+import bhd5 from '../../../../../assets/images/bhd5.png';
+import bhd6 from '../../../../../assets/images/bhd6.png';
+
+const bhdLists = [
+{id: 1, srcImg: `${bhd1}`},
+{id: 2, srcImg: `${bhd2}`},
+{id: 3, srcImg: `${bhd3}`},
+{id: 4, srcImg: `${bhd4}`},
+{id: 5, srcImg: `${bhd5}`},
+{id: 6, srcImg: `${bhd6}`},
+]
+
+
 export default function Showtime(props) {
   const { listTheater, listMovie } = props;
  
@@ -8,26 +26,26 @@ export default function Showtime(props) {
     if (listTheater !== null) {
       
       return listTheater.map((item) => (
-        <div
+        <a
           key={item.biDanh}
           
           className="list-group-item list-group-item-action active bg-white"
           id="list-home-list"
           data-toggle="list"
-          href= "bhd"
+          href= "#bhd"
           role="tab"
           aria-controls="home"
         >
           <img src={item.logo} alt={item.logo} />
-        </div>
+        </a>
       ));
     }
   };
 
   const renderListTheater2 = () => {
-    if (listTheater !== null) {
+    if (bhdLists !== null) {
      
-      return listTheater.map((item) => (
+      return bhdLists.map((item) => (
         <div
           className="showTime__sublist list-group-item list-group-item-action active bg-white d-flex "
           id="list-home-list"
@@ -35,12 +53,12 @@ export default function Showtime(props) {
           href="#bhd-1"
           role="tab"
           aria-controls="home"
-          key={item.biDanh}
+          key={item.id}
         >
-          <img src={item.logo} alt={item.logo} />
+          <img src={item.srcImg} alt={item.srcImg} />
           <div className="movieCinema">
             <span className="nameMovieCinema">
-              <span className="colorCinema">{item.maHeThongRap}</span>- Bitexco
+              <span className="colorCinema">BHDStar</span> - Bitexco
             </span>
             <span className="infoMovieCinema">
               L3-Bitexco Icon 68, 2 Hải Triều, Q.1
@@ -104,12 +122,12 @@ export default function Showtime(props) {
     <section className="showTime" id="showTime_Link">
       <div className="showTime__content container">
         <div className="showTime__detail row">
-          <div className="col-2 left-content d-flex justify-content-end">
+          <div className="col-1 left-content">
             <div className="list-group" id="list-tab" role="tablist">
               {renderListTheater1()}
             </div>
           </div>
-          <div className="col-10 middle-content ">
+          <div className="col-11 middle-content ">
             <div className="tab-content" id="tab-sublist">
               <div
                 className="tab-pane fade show active"

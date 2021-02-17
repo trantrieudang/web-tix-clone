@@ -1,6 +1,4 @@
-.list-group{
-    border-radius: 0px !important;
-}
+
 .showTime {
      padding-top: 120px;
      padding-bottom: 120px;
@@ -15,8 +13,9 @@
                  .list-group {
                      border: 1px solid $color-gray-6;
                      border-right: 0px !important;
+                     border-radius: 0px !important;
                     height: 100%;
-                    width: 60%;
+                    
                     margin: 0 !important;
                      .list-group-item {
                          padding: 20px;
@@ -63,7 +62,8 @@
                                     color: black;
                                     margin-left: 15px;
                                     span {
-                                        display: block;
+                                        
+                                        display: inline-block;
                                         text-align: justify;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
@@ -71,6 +71,10 @@
                                         color: #949494;
                                         white-space: normal;
                                         line-height: 1.4;
+                                        .colorCinema{
+                                            display: inline;
+                                            
+                                        }
                                     }
                                 }
                                 &::after {
@@ -232,4 +236,3 @@
          }
      }
  }
- 

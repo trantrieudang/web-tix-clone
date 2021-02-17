@@ -294,6 +294,8 @@
 
 .searchBar {
   position: relative;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .searchBar .navbar {
@@ -585,10 +587,6 @@
   transition: all 0.2s;
 }
 
-.list-group {
-  border-radius: 0px !important;
-}
-
 .showTime {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -605,8 +603,8 @@
 .showTime .showTime__content .showTime__detail .left-content .list-group {
   border: 1px solid #dedfe0;
   border-right: 0px !important;
+  border-radius: 0px !important;
   height: 100%;
-  width: 60%;
   margin: 0 !important;
 }
 
@@ -663,7 +661,7 @@
 }
 
 .showTime .showTime__content .showTime__detail .middle-content .showTime__detail-2 .showTime__items-left-2 #list-tab #list-home-list .movieCinema span {
-  display: block;
+  display: inline-block;
   text-align: justify;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -671,6 +669,10 @@
   color: #949494;
   white-space: normal;
   line-height: 1.4;
+}
+
+.showTime .showTime__content .showTime__detail .middle-content .showTime__detail-2 .showTime__items-left-2 #list-tab #list-home-list .movieCinema span .colorCinema {
+  display: inline;
 }
 
 .showTime .showTime__content .showTime__detail .middle-content .showTime__detail-2 .showTime__items-left-2 #list-tab #list-home-list::after {
