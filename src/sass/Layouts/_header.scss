@@ -1,6 +1,8 @@
 .header {
+  
   .header__content {
     .navbar {
+      z-index: 9999;
       position: fixed;
       top: -1px;
       left: 0;
@@ -8,7 +10,7 @@
       height: 50px;
       background-color: rgba(255, 255, 255, 0.95);
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      z-index: 9;
+      
       transition: all 0.2s;
       .webLogo {
         width: 50px;

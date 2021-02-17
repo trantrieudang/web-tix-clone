@@ -27,8 +27,13 @@ function Register(props) {
 
       enqueueSnackbar('Register successfully!!! 🎉', { variant: 'success' });
     } catch (error) {
+      if(error.message === 'Request failed with status code 500'){
+        enqueueSnackbar('Tên tài khoản hoặc email đã tồn tại!!!', { variant: 'error' });
+      } else{
+        enqueueSnackbar(error.message, { variant: 'error' });
+      }
       console.log('Failed to register:', error);
-      enqueueSnackbar(error.message, { variant: 'error' });
+      
     }
   };
 

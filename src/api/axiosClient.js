@@ -35,6 +35,7 @@ axiosClient.interceptors.request.use(
        // Any status codes that falls outside the range of 2xx cause this function to trigger
        // Do something with response error
        const { config, status, data } = error.response;
+       
        const URLS = ['/QuanLyNguoiDung/DangKy', '/QuanLyNguoiDung/DangNhap', '/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung', '/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02'];
        if (URLS.includes(config.url) && status === 400) {
          const errorList = data.data || [];
@@ -43,7 +44,8 @@ axiosClient.interceptors.request.use(
          const firstMessage = messageList.length > 0 ? messageList[0] : {};
          throw new Error(firstMessage.message);
        }
-   
+       
+       
        return Promise.reject(error);
      }
    );
